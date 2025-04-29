@@ -112,9 +112,10 @@ def client(ip, port, filename, window_size):
     print("\nData Transfer:\n")
     with open(filename, 'rb') as f:
         chunks = []
-        while chunk := f.read(992):
+        chunk = f.read(992)
+        while chunk:
             chunks.append(chunk)
-
+            chunk = f.read(992)
     base = 0
     next_seq = 0
     total = len(chunks)
